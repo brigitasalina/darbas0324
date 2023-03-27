@@ -44,10 +44,10 @@ public class Main {
 
 
 
-        plants.add(a);
-        plants.add(b);
-        plants.add(c);
-        plants.add(d);
+        Plant.plants.add(a);
+        Plant.plants.add(b);
+        Plant.plants.add(c);
+        Plant.plants.add(d);
 
 
 
