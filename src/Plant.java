@@ -117,6 +117,7 @@ public class Plant {
                 plants.setAnnual( sc.nextBoolean() );
                 System.out.println("Įveskite kuriame kontinente auga augalas");
                 plants.setContinent( sc.nextLine() );
+                plants.setContinent( sc.nextLine() );
                 System.out.println("Įveskite augalo aukštį metrais");
                 plants.setHeight( sc.nextInt() );
                 System.out.println("Įveskite ar augalas valgomas");

@@ -8,6 +8,7 @@ public class Main {
 
         ArrayList<Plant> plants = new ArrayList<>();
 
+
         Scanner sc = new Scanner(System.in);
         Plant a = new Plant();
         a.setTitle("Rope");
@@ -49,6 +50,8 @@ public class Main {
         plants.add(d);
 
 
+
+
       while (true){
         Plant.info();
         int input = sc.nextInt();
@@ -61,10 +64,10 @@ public class Main {
                 Plant.addPlant();
                 break;
             case 3:
-                System.out.println("buvo labas");
+                System.out.println();
                 break;
             case 4:
-                System.out.println("buvo labas");
+                System.out.println();
                 break;
             case 5:
                 System.exit(1);
