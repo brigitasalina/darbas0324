@@ -5,10 +5,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-
-        ArrayList<Plant> plants = new ArrayList<>();
-
-
         Scanner sc = new Scanner(System.in);
         Plant a = new Plant();
         a.setTitle("Rope");
@@ -42,43 +38,35 @@ public class Main {
         d.setHeight(90);
         d.setEdible(false);
 
-
-
         Plant.plants.add(a);
         Plant.plants.add(b);
         Plant.plants.add(c);
         Plant.plants.add(d);
 
+        while (true) {
+            Plant.info();
+            int input = sc.nextInt();
+            switch (input) {
+                case 1:
+                    Plant.printPlant();
+                    break;
+                case 2:
+                    Plant.addPlant();
+                    break;
+                case 3:
+                  Plant.editPlant();
+                    break;
+                case 4:
+                    Plant.deletePlant();
+                    break;
+                case 5:
+                    System.exit(1);
+                    break;
+                default:
+                    System.out.println();
 
-
-
-      while (true){
-        Plant.info();
-        int input = sc.nextInt();
-        sc.nextLine();
-        switch (input){
-            case 1:
-                Plant.printPlant();
-                break;
-            case 2:
-                Plant.addPlant();
-                break;
-            case 3:
-                System.out.println();
-                break;
-            case 4:
-                System.out.println();
-                break;
-            case 5:
-                System.exit(1);
-                break;
-            default:
-                System.out.println("Pasirinkite validžią opciją");
-
+            }
         }
-      }
-
-
 
 
     }
