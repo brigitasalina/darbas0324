@@ -105,10 +105,11 @@ public class Plant {
 
     public static void info() {
         System.out.println("1. Pamatyti sąrašą");
-        System.out.println("2. Pridėti augalą");
-        System.out.println("3. Redaguoti augalą");
-        System.out.println("4. Ištrinti augalą");
-        System.out.println("5. Išeiti iš programos");
+        System.out.println("2. Filtruoti srasa");
+        System.out.println("3. Pridėti augalą");
+        System.out.println("4. Redaguoti augalą");
+        System.out.println("5. Ištrinti augalą");
+        System.out.println("6. Išeiti iš programos");
 
     }
 
@@ -169,6 +170,139 @@ public class Plant {
                 }
             }
         }
+         public static void filter(){
+             System.out.println("Pasirinkite pagal kuri lauka noresite filtruoti");
+             System.out.println("1.Pagal pavadinima");
+             System.out.println("2.Pagal lotyniska pavadinima");
+             System.out.println("3.Pagal tai ar daugiametis");
+             System.out.println("4.Pagal kontinenta");
+             System.out.println("5.Pagal auksti");
+             System.out.println("6.Pagal tai ar valgomas");
+             int input = sc.nextInt();
+             sc.nextLine();
+             switch (input){
+                 case 1:
+                     filterByTitle();
+                     break;
+                 case 2:
+                     filterByLatinTitle();
+                     break;
+                 case 3:
+                     filterByAnnual();
+                     break;
+                 case 4:
+                     filterByContinent();
+                     break;
+                 case 5:
+                     filterByHeight();
+                     break;
+                 case 6:
+                     filterByEdible();
+                     break;
+             }
+         }
+
+      public static void filterByTitle(){
+          System.out.println("Iveskite pavadinima arba pavadinimo fragmenta:");
+          String input = sc.nextLine().toLowerCase();
+          for (int i = 0; i <plants.size() ; i++) {
+              if (plants.get(i).title.toLowerCase().contains(input)){
+                  System.out.println(plants.get(i));
+              }
+
+          }
+
+      }
+    public static void filterByLatinTitle(){
+        System.out.println("Iveskite lotyniska pavadinima arba pavadinimo fragmenta:");
+        String input = sc.nextLine().toLowerCase();
+        for (int i = 0; i <plants.size() ; i++) {
+            if (plants.get(i).latinTitle.toLowerCase().contains(input)){
+                System.out.println(plants.get(i));
+            }
+
+        }
+
+    }
+    public static void filterByAnnual(){
+        System.out.println("Iveskite ar augalas vienmetis (tue - vienmetis, false, daugiametis):");
+        boolean input = sc.nextBoolean();
+        sc.nextLine();
+        for (int i = 0; i <plants.size() ; i++) {
+            if (plants.get(i).annual == input ){
+                System.out.println(plants.get(i));
+            }
+
+        }
+
+    }
+    public static void filterByContinent(){
+        System.out.println("Iveskite kontinenta arba pavadinimo fragmenta:");
+        String input = sc.nextLine().toLowerCase();
+        for (int i = 0; i <plants.size() ; i++) {
+            if (plants.get(i).continent.toLowerCase().contains(input)){
+                System.out.println(plants.get(i));
+            }
+
+        }
+
+    }
+    public static void filterByHeight(){
+        System.out.println("Iveskite augalo auksti centimetrais:");
+        int input = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i <plants.size() ; i++) {
+            if (plants.get(i).height == input){
+                System.out.println(plants.get(i));
+            }
+
+        }
+
+    }
+    public static void filterByEdible(){
+        System.out.println("Iveskite ar augalas valgomas(tue - valgomas, false, nevalgomas):");
+        boolean input = sc.nextBoolean();
+        sc.nextLine();
+        for (int i = 0; i <plants.size() ; i++) {
+            if (plants.get(i).edible == input ){
+                System.out.println(plants.get(i));
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
+
+
+
+
+
+
