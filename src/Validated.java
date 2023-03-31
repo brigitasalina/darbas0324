@@ -1,25 +1,27 @@
 import java.util.Scanner;
 
 public class Validated {
-    public static int meter(Scanner sc){
-         while (true){
-        int num = integer(sc);
-            if (num >= 0 && num < 1000){
-                return  num;
+
+
+    public static int height(Scanner sc) {
+        while (true) {
+            int num = integer(sc);
+            if (num >= 0 && num < 1000) {
+                return num;
             }
-             System.out.println( "Prasome iveskite teisingai metrus");
-             }
+            System.out.println("Prasome iveskite teisingai centimetrus");
+        }
 
     }
 
-    public static int integer(Scanner sc){
+    public static int integer(Scanner sc) {
         int input = 0;
         boolean shouldGo = true;
-        while (shouldGo){
-            try{
+        while (shouldGo) {
+            try {
                 input = sc.nextInt();
                 shouldGo = false;
-            }catch (Exception e){
+            } catch (Exception e) {
                 sc.nextLine();
                 System.out.println("Pasirinkite teisinga skaiciu");
             }
@@ -27,14 +29,14 @@ public class Validated {
         return input;
     }
 
-    public static boolean bool(Scanner sc){
+    public static boolean bool(Scanner sc) {
         boolean input = false;
         boolean shouldGo = true;
-        while (shouldGo){
-            try{
+        while (shouldGo) {
+            try {
                 input = sc.nextBoolean();
                 shouldGo = false;
-            }catch (Exception e){
+            } catch (Exception e) {
                 sc.nextLine();
                 System.out.println("Iveskite teisinga reiksme (true/false)");
             }
@@ -42,5 +44,26 @@ public class Validated {
         return input;
     }
 
+    public static String string(Scanner sc) {
+        while (true) {
 
+            String input = sc.nextLine();
+
+            if (input.trim().length() != 0 &&
+                    input.replaceAll("[^a-zA-Z0-9ąčęėįšųūžĄČĘĖĮŠŲŪŽ ]", "").length() == input.length() &&
+                    input.replaceAll("[^0-9]", "").length() != input.length()
+            ){
+                input = input.trim().replaceAll(" +", " ");
+                String[] pieces = input.split(" ");
+                for (int i = 0; i < pieces.length; i++) {
+                    input += pieces[i].toUpperCase().charAt(0) + pieces[i].toLowerCase().substring(1, pieces.length) + " ";
+
+                }
+                return input.trim();
+
+            }
+            System.out.println("Iveskite teisinga zodi");
+        }
+
+    }
 }

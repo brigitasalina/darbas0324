@@ -145,7 +145,7 @@ public class Plant {
              a = new Plant(id);
         }
         System.out.println("Įveskite augalo pavadinimą");
-        a.setTitle(sc.nextLine());
+        a.setTitle(Validated.string(sc));
         System.out.println("Įveskite augalo lotynišką pavadinimą");
         a.setLatinTitle(sc.nextLine());
         System.out.println("Įveskite ar augalas daugiametis true/false");
@@ -153,8 +153,8 @@ public class Plant {
         System.out.println("Įveskite kuriame kontinente auga augalas");
         a.setContinent(sc.nextLine());
         a.setContinent(sc.nextLine());
-        System.out.println("Įveskite augalo aukštį metrais");
-        a.setHeight(Validated.meter(sc));
+        System.out.println("Įveskite augalo aukštį centimetrais");
+        a.setHeight(Validated.height(sc));
         System.out.println("Įveskite ar augalas valgomas true/false");
         a.setEdible(Validated.bool(sc));
         sc.nextLine();
@@ -177,10 +177,10 @@ public class Plant {
              System.out.println("Pasirinkite pagal kuri lauka noresite filtruoti");
              System.out.println("1.Pagal pavadinima");
              System.out.println("2.Pagal lotyniska pavadinima");
-             System.out.println("3.Pagal tai ar daugiametis");
+             System.out.println("3.Pagal tai ar augalas vienmetis");
              System.out.println("4.Pagal kontinenta");
-             System.out.println("5.Pagal auksti");
-             System.out.println("6.Pagal tai ar valgomas");
+             System.out.println("5.Pagal augalo auksti");
+             System.out.println("6.Pagal tai ar augalas valgomas");
              System.out.println("7.Nenoriu filtruoti");
              int input = Validated.integer(sc);
              sc.nextLine();
@@ -275,7 +275,7 @@ public class Plant {
     }
     public static void filterByHeight(){
         System.out.println("Iveskite augalo auksti metrais:");
-        int input = Validated.meter(sc);
+        int input = Validated.height(sc);
         sc.nextLine();
         int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
