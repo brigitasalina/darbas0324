@@ -88,7 +88,7 @@ public class Plant {
     }
 
     public void setEdible(boolean edible) {
-        this.title = title;
+        this.edible = edible;
     }
 
     public boolean getEdible() {
@@ -110,6 +110,7 @@ public class Plant {
         System.out.println("4. Redaguoti augalą");
         System.out.println("5. Ištrinti augalą");
         System.out.println("6. Išeiti iš programos");
+        System.out.println("7. Nenoriu filtruoti");
 
     }
 
@@ -126,7 +127,7 @@ public class Plant {
 
     public static void editPlant() {
         System.out.println("Iveskite augalo id kuri norite redaguoti:");
-        int id = sc.nextInt();
+        int id = Validated.integer(sc);
         sc.nextLine();
         for (int i = 0; i < plants.size(); i++) {
             if (plants.get(i).id == id) {
@@ -134,6 +135,7 @@ public class Plant {
                 return;
             }
         }
+        System.out.println("Tokio id neradome");
     }
     public static Plant createPlant(int id){
         Plant a;
@@ -147,21 +149,21 @@ public class Plant {
         System.out.println("Įveskite augalo lotynišką pavadinimą");
         a.setLatinTitle(sc.nextLine());
         System.out.println("Įveskite ar augalas daugiametis true/false");
-        a.setAnnual(sc.nextBoolean());
+        a.setAnnual(Validated.bool(sc));
         System.out.println("Įveskite kuriame kontinente auga augalas");
         a.setContinent(sc.nextLine());
         a.setContinent(sc.nextLine());
         System.out.println("Įveskite augalo aukštį metrais");
-        a.setHeight(sc.nextInt());
+        a.setHeight(Validated.meter(sc));
         System.out.println("Įveskite ar augalas valgomas true/false");
-        a.setEdible(sc.nextBoolean());
+        a.setEdible(Validated.bool(sc));
         sc.nextLine();
         return a;
 
     }
         public static void deletePlant () {
             System.out.println("Iveskite augalo id kuri norite trinti:");
-            int id = sc.nextInt();
+            int id = Validated.integer(sc);
             sc.nextLine();
             for (int i = 0; i < plants.size(); i++) {
                 if (plants.get(i).id == id) {
@@ -169,6 +171,7 @@ public class Plant {
                     return;
                 }
             }
+            System.out.println("Tokio id neradome");
         }
          public static void filter(){
              System.out.println("Pasirinkite pagal kuri lauka noresite filtruoti");
@@ -178,7 +181,8 @@ public class Plant {
              System.out.println("4.Pagal kontinenta");
              System.out.println("5.Pagal auksti");
              System.out.println("6.Pagal tai ar valgomas");
-             int input = sc.nextInt();
+             System.out.println("7.Nenoriu filtruoti");
+             int input = Validated.integer(sc);
              sc.nextLine();
              switch (input){
                  case 1:
@@ -199,77 +203,107 @@ public class Plant {
                  case 6:
                      filterByEdible();
                      break;
+                 case 7:
+                     return;
+                 default:
+                     System.out.println("Tokios opcijos nera");
+                     break;
              }
          }
 
       public static void filterByTitle(){
           System.out.println("Iveskite pavadinima arba pavadinimo fragmenta:");
           String input = sc.nextLine().toLowerCase();
+          int count = 0;
           for (int i = 0; i <plants.size() ; i++) {
               if (plants.get(i).title.toLowerCase().contains(input)){
                   System.out.println(plants.get(i));
+                  count++;
               }
 
+          }
+          if (count == 0){
+              System.out.println( "Augalo tokiu pavadinimu neradome");
           }
 
       }
     public static void filterByLatinTitle(){
         System.out.println("Iveskite lotyniska pavadinima arba pavadinimo fragmenta:");
         String input = sc.nextLine().toLowerCase();
+        int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).latinTitle.toLowerCase().contains(input)){
                 System.out.println(plants.get(i));
+                count ++;
             }
 
         }
-
+        if (count == 0){
+            System.out.println( "Augalo tokiu pavadinimu neradome");
+        }
     }
     public static void filterByAnnual(){
-        System.out.println("Iveskite ar augalas vienmetis (tue - vienmetis, false, daugiametis):");
-        boolean input = sc.nextBoolean();
+        System.out.println("Iveskite ar augalas vienmetis (true - vienmetis, false, daugiametis):");
+        boolean input = Validated.bool(sc);
         sc.nextLine();
+        int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).annual == input ){
                 System.out.println(plants.get(i));
+                count++;
             }
 
         }
-
+        if (count == 0){
+            System.out.println( "Ar augalas vienmetis neradome");
+        }
     }
     public static void filterByContinent(){
         System.out.println("Iveskite kontinenta arba pavadinimo fragmenta:");
         String input = sc.nextLine().toLowerCase();
+        int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).continent.toLowerCase().contains(input)){
                 System.out.println(plants.get(i));
+                count ++;
             }
 
         }
-
+        if (count == 0){
+            System.out.println( "Augalo augancio siame kontinente neradome");
+        }
     }
     public static void filterByHeight(){
-        System.out.println("Iveskite augalo auksti centimetrais:");
-        int input = sc.nextInt();
+        System.out.println("Iveskite augalo auksti metrais:");
+        int input = Validated.meter(sc);
         sc.nextLine();
+        int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).height == input){
                 System.out.println(plants.get(i));
+                count ++;
             }
 
         }
-
+        if (count == 0){
+            System.out.println( "Tokio aukscio augalo neradome");
+        }
     }
     public static void filterByEdible(){
-        System.out.println("Iveskite ar augalas valgomas(tue - valgomas, false, nevalgomas):");
-        boolean input = sc.nextBoolean();
+        System.out.println("Iveskite ar augalas valgomas(true - valgomas, false, nevalgomas):");
+        boolean input = Validated.bool(sc);
         sc.nextLine();
+        int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).edible == input ){
                 System.out.println(plants.get(i));
+                count ++;
             }
 
         }
-
+        if (count == 0){
+            System.out.println( "Ar augalas valgomas neradome");
+        }
     }
 
 

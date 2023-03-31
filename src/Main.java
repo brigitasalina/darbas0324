@@ -28,7 +28,7 @@ public class Main {
         c.setAnnual(false);
         c.setContinent("Siaures Amerika");
         c.setHeight(200);
-        c.setEdible(true);
+        c.setEdible(false);
 
         Plant d = new Plant();
         d.setTitle("Kraujalake");
@@ -45,7 +45,9 @@ public class Main {
 
         while (true) {
             Plant.info();
-            int input = sc.nextInt();
+            int input = Validated.integer(sc);
+
+
             switch (input) {
                 case 1:
                     Plant.printPlant();
@@ -66,7 +68,7 @@ public class Main {
                     System.exit(1);
                     break;
                 default:
-                    System.out.println();
+                    System.out.println("Prasome pasirinkti validzia opcija");
             }
         }
 
