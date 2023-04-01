@@ -55,11 +55,12 @@ public class Validated {
             ){
                 input = input.trim().replaceAll(" +", " ");
                 String[] pieces = input.split(" ");
+                String result = "";
                 for (int i = 0; i < pieces.length; i++) {
-                    input += pieces[i].toUpperCase().charAt(0) + pieces[i].toLowerCase().substring(1, pieces.length) + " ";
+                  result += pieces[i].toUpperCase().charAt(0) + pieces[i].toLowerCase().substring(1, pieces[i].length()) + " ";
 
                 }
-                return input.trim();
+                return result.trim();
 
             }
             System.out.println("Iveskite teisinga zodi");

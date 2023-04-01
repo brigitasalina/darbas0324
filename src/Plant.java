@@ -213,7 +213,7 @@ public class Plant {
 
       public static void filterByTitle(){
           System.out.println("Iveskite pavadinima arba pavadinimo fragmenta:");
-          String input = sc.nextLine().toLowerCase();
+          String input = sc.nextLine().toLowerCase().trim().replaceAll( " +", " ");
           int count = 0;
           for (int i = 0; i <plants.size() ; i++) {
               if (plants.get(i).title.toLowerCase().contains(input)){
@@ -229,7 +229,7 @@ public class Plant {
       }
     public static void filterByLatinTitle(){
         System.out.println("Iveskite lotyniska pavadinima arba pavadinimo fragmenta:");
-        String input = sc.nextLine().toLowerCase();
+        String input = sc.nextLine().toLowerCase().trim().replaceAll( " +", " ");
         int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).latinTitle.toLowerCase().contains(input)){
@@ -260,7 +260,7 @@ public class Plant {
     }
     public static void filterByContinent(){
         System.out.println("Iveskite kontinenta arba pavadinimo fragmenta:");
-        String input = sc.nextLine().toLowerCase();
+        String input = sc.nextLine().toLowerCase().trim().replaceAll( " +", " ");
         int count = 0;
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i).continent.toLowerCase().contains(input)){
